@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: "#bold",
+    fontWeight: "bold",
+
   },
   items: {
     marginTop: 30,
