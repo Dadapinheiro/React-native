@@ -69,13 +69,13 @@ export default function App() {
       >
         <TextInput
           style={styles.input}
-          placeholder={"Write a task"}
+          placeholder={"Adicionar tarefas"}
           value={task}
           onChangeText={(text) => setTask(text)}
         />
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+            <Text style={styles.addText}>Clique</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
