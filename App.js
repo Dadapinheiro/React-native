@@ -44,7 +44,7 @@ export default function App() {
       >
         {/* Today's Tasks */}
         <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>TAREFAS DIÁRIA</Text>
+          <Text style={styles.sectionTitle}>TAREFAS DIÁRIAS</Text>
           <View style={styles.items}>
             {/* This is where the tasks will go! */}
             {taskItems.map((item, index) => {
@@ -85,7 +85,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8EAED",
+    backgroundColor: "#8fbc8f",
   },
   tasksWrapper: {
     paddingTop: 80,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: "#bold",
   },
   items: {
     marginTop: 30,
@@ -110,14 +110,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: "#FFF",
     borderRadius: 60,
-    borderColor: "#C0C0C0",
+    borderColor: "#000000",
     borderWidth: 1,
     width: 250,
   },
   addWrapper: {
     width: 60,
     height: 60,
-    backgroundColor: "#FFF",
+    backgroundColor: "#ffa500",
     borderRadius: 60,
     justifyContent: "center",
     alignItems: "center",
