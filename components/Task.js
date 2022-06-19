@@ -9,7 +9,11 @@ const Tasks = (props) => {
         <View style={styles.square}></View>
         <Text style={styles.itemsText}>{props.text}</Text>
       </View>
-      <View style={styles.circular}></View>
+      <View style={styles.circular}>
+        <Text>
+          X
+        </Text>
+      </View>
     </View>
   );
 };
@@ -41,11 +45,11 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
   },
   circular: {
-    width: 12,
-    height: 12,
-    borderColor: "#55BCF6",
-    borderWidth: 2,
-    borderRadius: 5,
+    // width: 12,
+    // height: 12,
+    // borderColor: "#55BCF6",
+    // borderWidth: 2,
+    // borderRadius: 5,
   },
 });
 

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   KeyboardAvoidingView,
@@ -20,18 +21,36 @@ export default function App() {
   const handleAddTask = () => {
     Keyboard.dismiss();
 
-    setTaskItems([...taskItems, task]);
+    AsyncStorage.setItem('@tasks', JSON.stringify([...taskItems, task]));
 
+    setTaskItems([...taskItems, task]);
     setTask("");
   };
 
-  const completeTask = (index) => {
-    let itemsCopy = [...taskItems];
+  const completeTask = async (index) => {
+    let oldTasks = await handleTasks();
 
-    itemsCopy.splice(index, 1);
-
-    setTaskItems(itemsCopy);
+    const newTasks = oldTasks.filter((_, position) => {
+      return position !== index;
+    })
+    
+    await AsyncStorage.setItem('@tasks', JSON.stringify(newTasks));
+    setTaskItems(newTasks)
   };
+
+  const handleTasks = async () => {
+    const result = await AsyncStorage.getItem('@tasks');
+
+    const parsedResult = await JSON.parse(result);
+
+    if (parsedResult === null || parsedResult === undefined) return []
+
+    return parsedResult;
+  }
+
+  useEffect(() => {
+    handleTasks().then(tasks => setTaskItems(tasks));
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -47,7 +66,7 @@ export default function App() {
           <Text style={styles.sectionTitle}>TAREFAS DIÁRIAS</Text>
           <View style={styles.items}>
             {/* This is where the tasks will go! */}
-            {taskItems.map((item, index) => {
+            {taskItems?.length > 0 && taskItems?.map((item, index) => {
               return (
                 <TouchableOpacity
                   key={index}
